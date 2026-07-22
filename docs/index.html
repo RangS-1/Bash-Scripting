@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Bash-Scripting by RangS</title>
+    
+    <!-- Google Fonts: Outfit (Sleek UI) and Fira Code (Terminal Monospace) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons for clean aesthetic vector glyphs -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <!-- Terminal Header Mock -->
+        <header class="terminal-header">
+            <div class="terminal-dots">
+                <span class="dot close"></span>
+                <span class="dot minimize"></span>
+                <span class="dot maximize"></span>
+            </div>
+            <div class="terminal-title">rangs@archlinux: ~/bashing</div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Section -->
+            <section class="intro-section">
+                <div class="terminal-prompt-line">
+                    <span class="prompt-user">rangs@archlinux</span><span class="prompt-char">:~$</span>
+                    <span class="command-text">cat welcome.txt</span>
+                </div>
+                <h1 class="main-title">Bashing</h1>
+                <p id="typewriter-subtitle" class="main-subtitle">Bash Script project by RangS</p>
+                <div class="terminal-divider"></div>
+            </section>
+
+            <!-- Cards Section (Bash Scripts Grid) -->
+            <section class="cards-grid">
+                <article class="script-card">
+                    <div class="card-header">
+                        <i data-lucide="terminal" class="card-icon"></i>
+                        <span class="script-name">backup.sh</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="script-desc">Script to automate backup a folder and save it on $HOME/backup.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/RangS-1/Bashing/blob/main/backup.sh" target="_blank" rel="noopener noreferrer" class="github-btn" id="btn-backup">
+                            <i data-lucide="github"></i>
+                            <span>View File</span>
+                            <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="script-card">
+                    <div class="card-header">
+                        <i data-lucide="terminal" class="card-icon"></i>
+                        <span class="script-name">updater.sh</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="script-desc">Script to automate update on Arch Linux system, complete with system update, AUR update and clean cache.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/RangS-1/Bashing/blob/main/updater.sh" target="_blank" rel="noopener noreferrer" class="github-btn" id="btn-deploy">
+                            <i data-lucide="github"></i>
+                            <span>View File</span>
+                            <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="script-card">
+                    <div class="card-header">
+                        <i data-lucide="terminal" class="card-icon"></i>
+                        <span class="script-name">sysmon.sh</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="script-desc">System monitoring real-time to check CPU, RAM, Disk, Battery, Network Status, Ip Address and Uptime.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/RangS-1/Bashing/blob/main/sysmon.sh" target="_blank" rel="noopener noreferrer" class="github-btn" id="btn-sysmon">
+                            <i data-lucide="github"></i>
+                            <span>View File</span>
+                            <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+                        </a>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <!-- Bottom Footer -->
+        <footer class="main-footer">
+            <div class="footer-prompt">
+                <span class="prompt-user">rangs@archlinux</span><span class="prompt-char">:~$</span>
+                <span class="footer-copyright">Copyright 2026 RangS</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script Execution -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide SVG Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
