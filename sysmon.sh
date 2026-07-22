@@ -1,12 +1,6 @@
 #!/bin/bash
-
-echo "========================"
-echo "| Linux System Monitor |"
-echo "========================"
 echo ""
-
 get_ram(){
-
     printf "RAM Used: " && free -h | grep Mem | awk '{print $3}'
 }
 
@@ -39,9 +33,24 @@ get_uptime(){
     printf "Uptime: " && uptime -p | awk '{print $2, $3, $4, $5}'
 }
 
-get_ram
-get_disk
-get_battery
-get_network
-get_ip
-get_uptime
+update(){
+    while true
+    do
+        clear
+        echo "========================"
+        echo "| Linux System Monitor |"
+        echo "========================"
+        echo ""
+
+        get_ram
+        get_disk
+        get_battery
+        get_network
+        get_ip
+        get_uptime
+
+        sleep 2
+    done
+}
+
+update
