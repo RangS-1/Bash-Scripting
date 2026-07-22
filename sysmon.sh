@@ -33,6 +33,15 @@ get_uptime(){
     printf "Uptime: " && uptime -p | awk '{print $2, $3, $4, $5}'
 }
 
+show_dashboard(){
+    get_ram
+    get_disk
+    get_battery
+    get_network
+    get_ip
+    get_uptime    
+}
+
 update(){
     while true
     do
@@ -42,13 +51,8 @@ update(){
         echo "========================"
         echo ""
 
-        get_ram
-        get_disk
-        get_battery
-        get_network
-        get_ip
-        get_uptime
-
+        show_dashboard
+        
         sleep 2
     done
 }
