@@ -18,22 +18,35 @@ get_disk(){
 #    printf "CPU Used: " && top | awk '{print $10}'
 #}
 #
-#get_battery(){
+get_battery(){
+    printf "Battery: $(cat /sys/class/power_supply/BAT1/capacity)%%"
+}
 #
-#}
+get_network(){
+    NET_STATUS=$(nmcli networking connectivity)
+    if [[ "$NET_STATUS" == "full" ]]; then
+        echo ""
+        printf "Network: Connected"
+    else
+        echo ""
+        printf "Network: Not Connected"
+    fi
+}
 #
-#get_network(){
+get_ip(){
+    echo ""
+    printf "Your IP: "
+    printf "$(ip address)" | grep "scope global" | awk '{print $2}'
+}
 #
-#}
-#
-#get_ip(){
-#
-#}
-#
-#get_update(){
-#
-#}
+get_uptime(){
+    printf "Uptime: " && uptime -p | awk '{print $2, $3, $4, $5}'
+}
 
 get_ram
 get_disk
 #get_cpu
+get_battery
+get_network
+get_ip
+get_uptime
