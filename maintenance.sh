@@ -60,6 +60,26 @@ check_disk(){
     sleep 2
 }
 
+remove_downloads(){
+    echo
+    echo "[1] Delete Files"
+    echo "[2] Check Files"
+    echo "[3] Back"
+    read -p "[!] Please Choose: " REMOVE
+    if [[ "$REMOVE" == "1" ]]; then
+        echo "[!] Removing Files..."
+        find "$HOME/Downloads" -type f -mtime +7 -delete
+    elif [[ "$REMOVE" == "2" ]]; then
+        find "$HOME/Downloads" -type f -mtime +7
+        remove_downloads
+    elif [[ "$REMOVE" == "3" ]]; then
+        show_menu
+    else
+        echo "[!] Invalid input."
+        remove_downloads
+    fi
+}
+
 show_menu(){
     echo "================="
     echo "== Maintenance =="
@@ -89,6 +109,10 @@ show_menu(){
             ;;
         "4")
             clean_journal
+            show_menu
+            ;;
+        "5")
+            remove_downloads
             show_menu
             ;;
         "6")
