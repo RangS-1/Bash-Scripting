@@ -48,7 +48,6 @@ clean_journal(){
         sudo journalctl --vacuum-time=7d || grep "Vacuuming done"
     elif [[ "$JOURNAL" == "N" || "$JOURNAL" == "n" ]]; then
         echo "[!] Aight."
-        show_menu
     else
         echo "[!] Invalid input."
         clean_journal
@@ -80,6 +79,15 @@ remove_downloads(){
     fi
 }
 
+full_maintain(){
+    update_packages
+    clean_cache
+    clean_journal
+    remove_downloads
+    check_disk
+    echo "[✓] Full Maintain Successful"
+}
+
 show_menu(){
     echo "================="
     echo "== Maintenance =="
@@ -99,6 +107,10 @@ show_menu(){
     read -p "[!] Your Choice: " SELECT
 
     case "$SELECT" in
+        "1")
+            full_maintain
+            show_menu
+            ;;
         "2")
             update_packages
             show_menu
