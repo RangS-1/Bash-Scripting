@@ -29,10 +29,42 @@ update_packages(){
     fi
 }
 
+clean_cache(){
+    read -p "Do you want to clear cache?(Y/n) " CLEAR
+    if [[ "$CLEAR" == "Y" || "$CLEAR" == "y" ]]; then
+        echo "[!] Cleaning cache..."
+        sudo paccache -r -u -k 1 && sudo paccache -r -k 2
+    elif [[ "$CLEAR" == "N" || "$CLEAR" == "n" ]]; then
+        echo "Aight, "
+    else
+        echo "Invalid input."
+    fi
+}
+
+clean_journal(){
+    read -p "[!] Do you want to clear journal?(Y/n) " JOURNAL
+    if [[ "$JOURNAL" == "Y" || "$JOURNAL" == "y" ]]; then
+        echo "[!] Cleaning journal..."
+        sudo journalctl --vacuum-time=7d || grep "Vacuuming done"
+    elif [[ "$JOURNAL" == "N" || "$JOURNAL" == "n" ]]; then
+        echo "[!] Aight."
+        show_menu
+    else
+        echo "[!] Invalid input."
+        clean_journal
+    fi
+}
+
+check_disk(){
+    printf "[✓] Disk Used : " && df -h / | awk 'NR==2 {print $5}'
+    sleep 2
+}
+
 show_menu(){
     echo "================="
     echo "== Maintenance =="
     echo "================="
+    check_network
     echo
     echo "[!] Please select task!"
     echo
@@ -51,11 +83,24 @@ show_menu(){
             update_packages
             show_menu
             ;;
+        "3")
+            clean_cache
+            show_menu
+            ;;
+        "4")
+            clean_journal
+            show_menu
+            ;;
+        "6")
+            check_disk
+            show_menu
+            ;;
         "7")
             clear
             show_menu
             ;;
         "8")
+            echo
             echo "[✓] OK! See Ya!"
             exit 1
             ;;
