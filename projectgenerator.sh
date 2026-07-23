@@ -1,12 +1,18 @@
 #!/bin/bash
 
 if [[ $1 == "" && $2 == "" ]]; then
-    echo "No!"
+    echo "======================="
+    echo "== Project Generator =="
+    echo "======================="
+    echo ""
+    echo "[!] Available template"
+    echo "[1] web"
+    echo "[2] python"
+    echo ""
+    echo "[1] Example"
+    echo "./projectgenerator.sh web <folder-name>"
     exit 1
 fi
-
-echo "Template: $1"
-echo "Project : $2"
 
 TEMPLATE="$1"
 
@@ -66,6 +72,8 @@ EOF
 EOF
 }
 
+
+
 case "$TEMPLATE" in
     "web")
         create_web
@@ -75,8 +83,16 @@ case "$TEMPLATE" in
         create_python
         exit 1
         ;;
-    "php")
-        echo "PHP"
+    *)
+        echo "======================="
+        echo "== Project Generator =="
+        echo "======================="
+        echo ""
+        echo "[!] Available template"
+        echo "[1] web"
+        echo "[2] python"
+        echo ""
+        echo "[!] Example"
+        echo "./projectgenerator.sh web <folder-name>"
         exit 1
-        ;;
 esac
