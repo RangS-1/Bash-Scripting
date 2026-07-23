@@ -8,6 +8,7 @@ This repository contains several simple Bash scripts to help with everyday tasks
 - `projectgenerator.sh` — creates web or Python project structures automatically
 - `sysmon.sh` — displays system information in real time
 - `updater.sh` — updates the Arch Linux system and AUR packages
+- `maintenance.sh` — provides a simple maintenance menu for updates, cache cleanup, journal cleanup, and old downloads removal
 
 ## Prerequisites
 
@@ -22,6 +23,7 @@ For the monitoring and updater scripts, the following commands are also required
 
 - `free`, `df`, `uptime`, `ip`, `nmcli` for `sysmon.sh`
 - `pacman`, `yay`, `paccache` for `updater.sh`
+- `journalctl` for `maintenance.sh`
 
 ## Installation with Git
 
@@ -30,14 +32,14 @@ If you want to download this repository from Git, run:
 ```bash
 git clone <repository-url>
 cd Bashing
-chmod +x backup.sh projectgenerator.sh sysmon.sh updater.sh
+chmod +x backup.sh projectgenerator.sh sysmon.sh updater.sh maintenance.sh
 ```
 
 If you are already inside the local repository folder, you can simply run:
 
 ```bash
 cd /path/to/Bashing
-chmod +x backup.sh projectgenerator.sh sysmon.sh updater.sh
+chmod +x backup.sh projectgenerator.sh sysmon.sh updater.sh maintenance.sh
 ```
 
 ## How to Use
@@ -93,12 +95,30 @@ This script will:
 
 > This script is suitable for Arch Linux systems where `yay` is already installed.
 
+### 5. Maintenance Menu
+
+This script provides a simple interactive menu for common maintenance tasks.
+
+```bash
+./maintenance.sh
+```
+
+You can choose options to:
+
+- run a full maintenance routine
+- update system or AUR packages
+- clean package cache
+- clear old journal logs
+- remove old files from Downloads
+- check disk usage
+
 ## Folder Structure
 
 ```text
 Bashing/
 ├── docs/
 ├── backup.sh
+├── maintenance.sh
 ├── projectgenerator.sh
 ├── sysmon.sh
 └── updater.sh
