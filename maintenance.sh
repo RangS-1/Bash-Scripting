@@ -41,6 +41,12 @@ clean_cache(){
     fi
 }
 
+logging(){
+    LOG="$HOME/.maintenance.log"
+    CURRENT_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "[$CURRENT_TIME]: Last Used" >> "$LOG"
+}
+
 clean_journal(){
     read -p "[!] Do you want to clear journal?(Y/n) " JOURNAL
     if [[ "$JOURNAL" == "Y" || "$JOURNAL" == "y" ]]; then
@@ -80,11 +86,22 @@ remove_downloads(){
 }
 
 full_maintain(){
-    update_packages
-    clean_cache
-    clean_journal
-    remove_downloads
-    check_disk
+    read -p "[!] Do you want to FULL MAINTAIN?(Y/n) " MAINTAIN
+    if [[ "$MAINTAIN" == "Y" || "$MAINTAIN" == "y" ]]; then
+        echo "[!] STARTING FULL MAINTAIN..."
+        update_packages
+        clean_cache
+        clean_journal
+        remove_downloads
+        check_disk
+        logging
+    elif [[ "$MAINTAIN" == "N" || "$MAINTAIN" == "n" ]]; then
+        echo "[!] Aight."
+        show_menu
+    else
+        echo "[!] Invalid input."
+        full_maintain
+    fi
     echo "[✓] Full Maintain Successful"
 }
 
