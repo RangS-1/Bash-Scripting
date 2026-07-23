@@ -17,6 +17,11 @@ fi
 TEMPLATE="$1"
 
 PROJECT_NAME="$2"
+if [[ -d "$PROJECT_NAME" ]]; then
+    echo "[!] Project already exists."
+    exit 1
+fi
+
 mkdir "$PROJECT_NAME"
 
 create_web(){
@@ -77,10 +82,12 @@ EOF
 case "$TEMPLATE" in
     "web")
         create_web
+        echo "[!] Create Web Template on $PROJECT_NAME"
         exit 1
         ;;
     "python")
         create_python
+        echo "[!] Create Python Project on $PROJECT_NAME"
         exit 1
         ;;
     *)
